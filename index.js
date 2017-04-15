@@ -5,7 +5,7 @@ module.exports = () => {
   const radius = 3
   const c = component({ pure: true })
   c.on('render', function () {
-    const { width, height, playing, recording } = this.props
+    const { width, height, playing, recording, x: x = 0, y: y = 0 } = this.props
     const cellWidth = width / 5
     const line = idx => html`
       <line
@@ -19,7 +19,7 @@ module.exports = () => {
     `
     const id = Math.random().toString(16).slice(2)
     return html`
-      <g>
+      <g transform="translate(${x}, ${y})">
         <defs>
           <clipPath id="clip-${id}">
             <rect

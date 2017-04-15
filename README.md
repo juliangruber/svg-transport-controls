@@ -17,21 +17,19 @@ document.body.appendChild(html`
       height: 35,
       playing: false
     })}
-    <g transform="translate(0, 50)">
-      ${controls().render({
-        width: 210,
-        height: 35,
-        playing: true
-      })}
-    </g>
-    <g transform="translate(0, 100)">
-      ${controls().render({
-        width: 210,
-        height: 35,
-        playing: true,
-        recording: true
-      })}
-    </g>
+    ${controls().render({
+      width: 210,
+      height: 35,
+      y: 50,
+      playing: true
+    })}
+    ${controls().render({
+      width: 210,
+      height: 35,
+      y: 100,
+      playing: true,
+      recording: true
+    })}
   </svg>
 `)
 ```
