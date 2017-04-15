@@ -5,7 +5,7 @@ module.exports = () => {
   const radius = 3
   const c = component({ pure: true })
   c.on('render', function () {
-    const { width, height, playing } = this.props
+    const { width, height, playing, recording } = this.props
     const cellWidth = width / 5
     const line = idx => html`
       <line
@@ -17,8 +17,19 @@ module.exports = () => {
         stroke-width=0.5
       />
     `
+    const id = Math.random().toString(16).slice(2)
     return html`
       <g>
+        <defs>
+          <clipPath id="clip-${id}">
+            <rect
+              width=${width}
+              height=${height}
+              rx=${radius}
+              ry=${radius}
+            />
+          </clipPath>
+        </defs>
         <rect
           transform="translate(0, 1)"
           width=${width}
@@ -113,13 +124,29 @@ module.exports = () => {
           fill="white"
         />
         ${line(3)}
+        ${recording
+          ? html`
+              <rect
+                x=${cellWidth * 4 + 0.5}
+                y=0
+                width=${cellWidth - 1}
+                height=${height}
+                fill="hsl(0, 97%, 40%)"
+                clip-path="url(#clip-${id})"
+              />
+            `
+          : ''}
         <circle
           transform="translate(${cellWidth * 4}, 0)"
           cx=${cellWidth / 2}
           cy=${height / 2}
           r=${Math.min(cellWidth, height) * 1/4}
-          fill="hsl(0, 97%, 42%)"
-          stroke="hsl(0, 0%, 45%)"
+          fill="${recording
+                  ? 'white'
+                  : 'hsl(0, 97%, 42%)'}"
+          stroke="${recording
+                    ? ''
+                    : 'hsl(0, 0%, 45%)'}"
         />
       </g>
     `

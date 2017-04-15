@@ -15,5 +15,13 @@ document.body.appendChild(html`
         playing: true
       })}
     </g>
+    <g transform="translate(0, 100)">
+      ${controls().render({
+        width: 210,
+        height: 35,
+        playing: true,
+        recording: true
+      })}
+    </g>
   </svg>
 `)
