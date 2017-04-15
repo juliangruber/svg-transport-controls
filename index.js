@@ -61,20 +61,36 @@ module.exports = () => {
           fill="white"
         />
         ${line(1)}
-        <polygon
-          transform="translate(${cellWidth * 2}, 0)"
-          points="
-            ${cellWidth * 1/4    },${height * 1/4}
-            ${cellWidth * 1/4 + 2},${height * 1/4}
-            ${cellWidth * 1/4 + 2},${height * 2/4}
-            ${cellWidth * 3/4    },${height * 1/4}
-            ${cellWidth * 3/4    },${height * 3/4}
-            ${cellWidth * 1/4 + 2},${height * 2/4}
-            ${cellWidth * 1/4 + 2},${height * 3/4}
-            ${cellWidth * 1/4    },${height * 3/4}
-          "
-          fill="white"
-        />
+        <g transform="translate(${cellWidth * 2}, 0)">
+          ${playing
+            ? html`
+                <polygon
+                  points="
+                    ${cellWidth * 1/4},${height * 1/4}
+                    ${cellWidth * 3/4},${height * 1/4}
+                    ${cellWidth * 3/4},${height * 3/4}
+                    ${cellWidth * 1/4},${height * 3/4}
+                  "
+                  fill="white"
+                />>
+              `
+            : html`
+                <polygon
+                  points="
+                    ${cellWidth * 1/4    },${height * 1/4}
+                    ${cellWidth * 1/4 + 2},${height * 1/4}
+                    ${cellWidth * 1/4 + 2},${height * 2/4}
+                    ${cellWidth * 3/4    },${height * 1/4}
+                    ${cellWidth * 3/4    },${height * 3/4}
+                    ${cellWidth * 1/4 + 2},${height * 2/4}
+                    ${cellWidth * 1/4 + 2},${height * 3/4}
+                    ${cellWidth * 1/4    },${height * 3/4}
+                  "
+                  fill="white"
+                />
+              `
+          }
+        </g>
         ${line(2)}
         ${playing
           ? html`
