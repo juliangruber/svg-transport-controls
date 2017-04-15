@@ -1,18 +1,22 @@
 const controls = require('.')
 const html = require('bel')
+const extend = Object.assign
+
+const handlers = {
+  onstop: () => console.log('stop'),
+  onplay: () => console.log('play'),
+  onrecord: () => console.log('record'),
+  onstart: () => console.log('start'),
+  onprevbar: () => console.log('prev bar'),
+  onnextbar: () => console.log('next bar')
+}
 
 document.body.appendChild(
   html`
   <svg>
-    ${controls().render({ width: 210, height: 35, playing: false })}
-    ${controls().render({ width: 210, height: 35, y: 50, playing: true })}
-    ${controls().render({
-      width: 210,
-      height: 35,
-      y: 100,
-      playing: true,
-      recording: true
-    })}
+    ${controls().render(extend({ width: 210, height: 35, playing: false }, handlers))}
+    ${controls().render(extend({ width: 210, height: 35, y: 50, playing: true }, handlers))}
+    ${controls().render(extend({ width: 210, height: 35, y: 100, playing: true, recording: true }, handlers))}
   </svg>
 `
 )
