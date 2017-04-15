@@ -2,26 +2,24 @@ const component = require('microcomponent')
 const html = require('bel')
 const noop = () => {}
 
-module.exports = () => {
+module.exports = () => component({ pure: true }).on('render', function () {
+  const {
+    width,
+    height,
+    playing,
+    recording,
+    x: x = 0,
+    y: y = 0,
+    onstart: onstart = noop,
+    onprevbar: onprevbar = noop,
+    onnextbar: onnextbar = noop,
+    onrecord: onrecord = noop,
+    onstop: onstop = noop,
+    onplay: onplay = noop
+  } = this.props
   const radius = 3
-  const c = component({ pure: true })
-  c.on('render', function () {
-    const {
-      width,
-      height,
-      playing,
-      recording,
-      x: x = 0,
-      y: y = 0,
-      onstart: onstart = noop,
-      onprevbar: onprevbar = noop,
-      onnextbar: onnextbar = noop,
-      onrecord: onrecord = noop,
-      onstop: onstop = noop,
-      onplay: onplay = noop
-    } = this.props
-    const cellWidth = width / 5
-    const line = idx => html`
+  const cellWidth = width / 5
+  const line = idx => html`
       <line
         x1=${cellWidth * (idx + 1)}
         y1=0
@@ -31,11 +29,11 @@ module.exports = () => {
         stroke-width=0.5
       />
     `
-    const clickable = () => html`
+  const clickable = () => html`
       <rect width=${cellWidth} height=${height} fill="transparent" />
     `
-    const id = Math.random().toString(16).slice(2)
-    return html`
+  const id = Math.random().toString(16).slice(2)
+  return html`
       <g transform="translate(${x}, ${y})">
         <defs>
           <clipPath id="clip-${id}">
@@ -166,6 +164,4 @@ module.exports = () => {
         </g>
       </g>
     `
-  })
-  return c
-}
+})

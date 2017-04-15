@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "bel": "^4.6.0",
-    "microcomponent": "github:juliangruber/microcomponent#add/pure"
+    "microcomponent": "^3.1.0"
   },
   "devDependencies": {
     "beefy": "^2.1.8",
