@@ -5,7 +5,14 @@ module.exports = () => {
   const radius = 3
   const c = component({ pure: true })
   c.on('render', function () {
-    const { width, height, playing, recording, x: x = 0, y: y = 0 } = this.props
+    const {
+      width,
+      height,
+      playing,
+      recording,
+      x: x = 0,
+      y: y = 0
+    } = this.props
     const cellWidth = width / 5
     const line = idx => html`
       <line
@@ -47,13 +54,13 @@ module.exports = () => {
         />
         <polygon
           points="
-            ${cellWidth * 1/4},${height * 2/4}
-            ${cellWidth * 2/4},${height * 1/4}
-            ${cellWidth * 2/4},${height * 2/4}
-            ${cellWidth * 3/4},${height * 1/4}
-            ${cellWidth * 3/4},${height * 3/4}
-            ${cellWidth * 2/4},${height * 2/4}
-            ${cellWidth * 2/4},${height * 3/4}
+            ${cellWidth * 1 / 4},${height * 2 / 4}
+            ${cellWidth * 2 / 4},${height * 1 / 4}
+            ${cellWidth * 2 / 4},${height * 2 / 4}
+            ${cellWidth * 3 / 4},${height * 1 / 4}
+            ${cellWidth * 3 / 4},${height * 3 / 4}
+            ${cellWidth * 2 / 4},${height * 2 / 4}
+            ${cellWidth * 2 / 4},${height * 3 / 4}
           "
           fill="white"
         />
@@ -61,50 +68,46 @@ module.exports = () => {
         <polygon
           transform="translate(${cellWidth}, 0)"
           points="
-            ${cellWidth * 1/4},${height * 1/4}
-            ${cellWidth * 2/4},${height * 2/4}
-            ${cellWidth * 2/4},${height * 1/4}
-            ${cellWidth * 3/4},${height * 2/4}
-            ${cellWidth * 2/4},${height * 3/4}
-            ${cellWidth * 2/4},${height * 2/4}
-            ${cellWidth * 1/4},${height * 3/4}
+            ${cellWidth * 1 / 4},${height * 1 / 4}
+            ${cellWidth * 2 / 4},${height * 2 / 4}
+            ${cellWidth * 2 / 4},${height * 1 / 4}
+            ${cellWidth * 3 / 4},${height * 2 / 4}
+            ${cellWidth * 2 / 4},${height * 3 / 4}
+            ${cellWidth * 2 / 4},${height * 2 / 4}
+            ${cellWidth * 1 / 4},${height * 3 / 4}
           "
           fill="white"
         />
         ${line(1)}
         <g transform="translate(${cellWidth * 2}, 0)">
-          ${playing
-            ? html`
+          ${playing ? html`
                 <polygon
                   points="
-                    ${cellWidth * 1/4},${height * 1/4}
-                    ${cellWidth * 3/4},${height * 1/4}
-                    ${cellWidth * 3/4},${height * 3/4}
-                    ${cellWidth * 1/4},${height * 3/4}
+                    ${cellWidth * 1 / 4},${height * 1 / 4}
+                    ${cellWidth * 3 / 4},${height * 1 / 4}
+                    ${cellWidth * 3 / 4},${height * 3 / 4}
+                    ${cellWidth * 1 / 4},${height * 3 / 4}
                   "
                   fill="white"
                 />>
-              `
-            : html`
+              ` : html`
                 <polygon
                   points="
-                    ${cellWidth * 1/4    },${height * 1/4}
-                    ${cellWidth * 1/4 + 2},${height * 1/4}
-                    ${cellWidth * 1/4 + 2},${height * 2/4}
-                    ${cellWidth * 3/4    },${height * 1/4}
-                    ${cellWidth * 3/4    },${height * 3/4}
-                    ${cellWidth * 1/4 + 2},${height * 2/4}
-                    ${cellWidth * 1/4 + 2},${height * 3/4}
-                    ${cellWidth * 1/4    },${height * 3/4}
+                    ${cellWidth * 1 / 4},${height * 1 / 4}
+                    ${cellWidth * 1 / 4 + 2},${height * 1 / 4}
+                    ${cellWidth * 1 / 4 + 2},${height * 2 / 4}
+                    ${cellWidth * 3 / 4},${height * 1 / 4}
+                    ${cellWidth * 3 / 4},${height * 3 / 4}
+                    ${cellWidth * 1 / 4 + 2},${height * 2 / 4}
+                    ${cellWidth * 1 / 4 + 2},${height * 3 / 4}
+                    ${cellWidth * 1 / 4},${height * 3 / 4}
                   "
                   fill="white"
                 />
-              `
-          }
+              `}
         </g>
         ${line(2)}
-        ${playing
-          ? html`
+        ${playing ? html`
               <rect
                 x=${cellWidth * 3 + 0.5}
                 y=0
@@ -112,20 +115,18 @@ module.exports = () => {
                 height=${height}
                 fill="green"
               />
-            `
-          : ''}
+            ` : ''}
         <polygon
           transform="translate(${cellWidth * 3}, 0)"
           points="
-            ${cellWidth * 1/4},${height * 1/4}
-            ${cellWidth * 3/4},${height * 2/4}
-            ${cellWidth * 1/4},${height * 3/4}
+            ${cellWidth * 1 / 4},${height * 1 / 4}
+            ${cellWidth * 3 / 4},${height * 2 / 4}
+            ${cellWidth * 1 / 4},${height * 3 / 4}
           "
           fill="white"
         />
         ${line(3)}
-        ${recording
-          ? html`
+        ${recording ? html`
               <rect
                 x=${cellWidth * 4 + 0.5}
                 y=0
@@ -134,19 +135,14 @@ module.exports = () => {
                 fill="hsl(0, 97%, 40%)"
                 clip-path="url(#clip-${id})"
               />
-            `
-          : ''}
+            ` : ''}
         <circle
           transform="translate(${cellWidth * 4}, 0)"
           cx=${cellWidth / 2}
           cy=${height / 2}
-          r=${Math.min(cellWidth, height) * 1/4}
-          fill="${recording
-                  ? 'white'
-                  : 'hsl(0, 97%, 42%)'}"
-          stroke="${recording
-                    ? ''
-                    : 'hsl(0, 0%, 45%)'}"
+          r=${Math.min(cellWidth, height) * 1 / 4}
+          fill="${recording ? 'white' : 'hsl(0, 97%, 42%)'}"
+          stroke="${recording ? '' : 'hsl(0, 0%, 45%)'}"
         />
       </g>
     `
