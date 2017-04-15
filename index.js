@@ -5,7 +5,7 @@ module.exports = () => {
   const radius = 3
   const c = component({ pure: true })
   c.on('render', function () {
-    const { width, height } = this.props
+    const { width, height, playing } = this.props
     const cellWidth = width / 5
     const line = idx => html`
       <line
@@ -76,6 +76,17 @@ module.exports = () => {
           fill="white"
         />
         ${line(2)}
+        ${playing
+          ? html`
+              <rect
+                x=${cellWidth * 3 + 0.5}
+                y=0
+                width=${cellWidth - 1}
+                height=${height}
+                fill="green"
+              />
+            `
+          : ''}
         <polygon
           transform="translate(${cellWidth * 3}, 0)"
           points="
