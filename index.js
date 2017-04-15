@@ -20,6 +20,14 @@ module.exports = () => {
     return html`
       <g>
         <rect
+          transform="translate(0, 1)"
+          width=${width}
+          height=${height}
+          rx=${radius}
+          ry=${radius}
+          fill="hsl(0, 0%, 35%)"
+        />
+        <rect
           width=${width}
           height=${height}
           rx=${radius}
@@ -82,7 +90,7 @@ module.exports = () => {
           transform="translate(${cellWidth * 4}, 0)"
           cx=${cellWidth / 2}
           cy=${height / 2}
-          r=${Math.min(cellWidth, height) * 3/8}
+          r=${Math.min(cellWidth, height) * 1/4}
           fill="hsl(0, 97%, 42%)"
           stroke="hsl(0, 0%, 45%)"
         />
