@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "repository": "juliangruber/svg-transport-controls",
-  "description": "",
+  "description": "DAW transport controls as SVG",
   "scripts": {
     "example": "beefy example.js",
     "test": "prettier-standard-formatter *.js && standard"
