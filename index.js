@@ -14,8 +14,6 @@ module.exports = () => component({
     x: x = 0,
     y: y = 0,
     onstart: onstart = noop,
-    onprevbar: onprevbar = noop,
-    onnextbar: onnextbar = noop,
     onrecord: onrecord = noop,
     onstop: onstop = noop,
     onplay: onplay = noop
