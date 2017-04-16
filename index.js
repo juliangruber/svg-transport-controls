@@ -2,7 +2,10 @@ const component = require('microcomponent')
 const html = require('bel')
 const noop = () => {}
 
-module.exports = () => component({ pure: true }).on('render', function () {
+module.exports = () => component({
+  name: 'svg-transport-controls',
+  pure: true
+}).on('render', function () {
   const {
     width,
     height,
