@@ -18,7 +18,7 @@ module.exports = () => component({ pure: true }).on('render', function () {
     onplay: onplay = noop
   } = this.props
   const radius = 3
-  const cellWidth = width / 5
+  const cellWidth = width / 3
   const line = idx => html`
       <line
         x1=${cellWidth * (idx + 1)}
@@ -60,39 +60,7 @@ module.exports = () => component({ pure: true }).on('render', function () {
           ry=${radius}
           fill="hsl(0, 0%, 60%)"
         />
-        <g onclick=${onprevbar}>
-          ${clickable()}
-          <polygon
-            points="
-              ${cellWidth * 1 / 4},${height * 2 / 4}
-              ${cellWidth * 2 / 4},${height * 1 / 4}
-              ${cellWidth * 2 / 4},${height * 2 / 4}
-              ${cellWidth * 3 / 4},${height * 1 / 4}
-              ${cellWidth * 3 / 4},${height * 3 / 4}
-              ${cellWidth * 2 / 4},${height * 2 / 4}
-              ${cellWidth * 2 / 4},${height * 3 / 4}
-            "
-            fill="white"
-          />
-        </g>
-        ${line(0)}
-        <g transform="translate(${cellWidth}, 0)" onclick=${onnextbar}>
-          ${clickable()}
-          <polygon
-            points="
-              ${cellWidth * 1 / 4},${height * 1 / 4}
-              ${cellWidth * 2 / 4},${height * 2 / 4}
-              ${cellWidth * 2 / 4},${height * 1 / 4}
-              ${cellWidth * 3 / 4},${height * 2 / 4}
-              ${cellWidth * 2 / 4},${height * 3 / 4}
-              ${cellWidth * 2 / 4},${height * 2 / 4}
-              ${cellWidth * 1 / 4},${height * 3 / 4}
-            "
-            fill="white"
-          />
-        </g>
-        ${line(1)}
-        <g transform="translate(${cellWidth * 2}, 0)" onclick=${playing ? onstop : onstart}>
+        <g onclick=${playing ? onstop : onstart}>
           ${clickable()}
           ${playing ? html`
                 <polygon
@@ -120,8 +88,8 @@ module.exports = () => component({ pure: true }).on('render', function () {
               />
             `}
         </g>
-        ${line(2)}
-        <g transform="translate(${cellWidth * 3}, 0)" onclick=${!playing && onplay}>
+        ${line(0)}
+        <g transform="translate(${cellWidth}, 0)" onclick=${!playing && onplay}>
           ${clickable()}
           ${playing ? html`
                 <rect
@@ -141,8 +109,8 @@ module.exports = () => component({ pure: true }).on('render', function () {
             fill="white"
           />
         </g>
-        ${line(3)}
-        <g transform="translate(${cellWidth * 4}, 0)" onclick=${!recording && onrecord}>
+        ${line(1)}
+        <g transform="translate(${cellWidth * 2}, 0)" onclick=${!recording && onrecord}>
           ${clickable()}
           ${recording ? html`
                 <rect

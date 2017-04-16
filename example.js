@@ -14,9 +14,9 @@ const handlers = {
 document.body.appendChild(
   html`
   <svg>
-    ${controls().render(extend({ width: 210, height: 35, playing: false }, handlers))}
-    ${controls().render(extend({ width: 210, height: 35, y: 50, playing: true }, handlers))}
-    ${controls().render(extend({ width: 210, height: 35, y: 100, playing: true, recording: true }, handlers))}
+    ${controls().render(extend({ width: 120, height: 35, playing: false }, handlers))}
+    ${controls().render(extend({ width: 120, height: 35, y: 50, playing: true }, handlers))}
+    ${controls().render(extend({ width: 120, height: 35, y: 100, playing: true, recording: true }, handlers))}
   </svg>
 `
 )
