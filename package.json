@@ -1,6 +1,6 @@
 {
   "name": "svg-transport-controls",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "license": "MIT",
   "repository": "juliangruber/svg-transport-controls",
   "description": "DAW transport controls as SVG",
