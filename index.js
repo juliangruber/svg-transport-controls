@@ -16,7 +16,9 @@ module.exports = () => component({
     onstart: onstart = noop,
     onrecord: onrecord = noop,
     onstop: onstop = noop,
-    onplay: onplay = noop
+    onplay: onplay = noop,
+    shadowColor: shadowColor = "hsl(0, 0%, 35%)",
+    backgroundColor: backgroundColor = "hsl(0, 0%, 60%)"
   } = this.props
   const radius = 3
   const cellWidth = width / 3
@@ -52,14 +54,14 @@ module.exports = () => component({
           height=${height}
           rx=${radius}
           ry=${radius}
-          fill="hsl(0, 0%, 35%)"
+          fill=${shadowColor}
         />
         <rect
           width=${width}
           height=${height}
           rx=${radius}
           ry=${radius}
-          fill="hsl(0, 0%, 60%)"
+          fill=${backgroundColor}
         />
         <g onclick=${playing ? onstop : onstart}>
           ${clickable()}
